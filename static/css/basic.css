@@ -1,0 +1,60 @@
+nav {
+        background-color: rgba(0, 0, 0, 0.856);
+
+        height: 70px;
+        font-size: large;
+        border: 1px solid;
+
+}
+.dropdown-item{
+        color: black;
+        font-size: medium;
+
+}
+.icon-dark{
+        color: black;
+}
+#box-head{
+        font-size: xx-large;
+        text-align: center;
+}
+.showpro{
+        background-color: white;
+        
+}
+body{
+        background-color: whitesmoke;
+}
+
+
+.bi-caret-up-fill,
+.bi-caret-down-fill{
+        color: black;
+}
+.card{
+        max-width: 250px;
+        margin: 10px;
+}
+.badge{
+        position: absolute;
+        top: 85px;
+        left: 75px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 5px;
+        font-size: 12px;
+}
+
+.checkcart {
+        font-weight: bold;
+        padding: 15px;
+        width: 110px;
+        background-color: blue;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        box-shadow: 5px 0px 15px black ;
+}
+
+
+

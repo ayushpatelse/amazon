@@ -1,0 +1,63 @@
+{% extends "shop/basic.html"%}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/enter.css' %}">
+
+{% endblock %}
+{%  block style %}
+<style>
+        .invisible {
+        display: none;
+    }
+</style>
+{% endblock %}
+{% block body %}
+{% if messages %}
+<div class="messages">
+        {% for message in messages %}
+        <h3 class="alert alert-{{ message.tags }}">{{ message }}!</h3>
+        {% endfor %}
+</div>
+{% endif %}
+<div class="box mt-5 ">
+
+        <p class="headin fw-bold">Login </p>
+        <hr>
+        <div class="d-flex justify-content-center p-5">
+
+                <form action="{% url 'signin'%}" method="POST">
+                        {% csrf_token %}
+
+                        <table class="table table-borderless">
+                                <thead>
+                                        <tr>
+                                                <th scope="col"><label class="form-label">Name :</label></th>
+                                                <th scope="col"><input type="text" class="form-control" name="name"
+                                                                required></th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <th><label class="form-label">Password :</label></th>
+                                                <td><input type="password" class="form-control" name="pass" required>
+                                                </td>
+                                        </tr>
+
+                                </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-primary ">Submit</button>
+                        <p style="font-size: x-small;">No Account ?<a href="{% url 'signup' %}">Signup</a></p>
+                </form>
+        </div>
+
+</div>
+
+
+<script>
+        
+        var check = document.getElementById("checkcart");
+        check.classList.add("invisible");
+
+</script>
+
+{% endblock %}

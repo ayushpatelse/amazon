@@ -1,0 +1,156 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% block title %} Amazon{% endblock %}
+{% block style %}
+<style>
+  .carousel-control-prev,
+  .carousel-control-next {
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    margin-top: 210px;
+  }
+
+  img {
+    height: 250px;
+    width: 90%;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .card {
+    height: 550px;
+    width: 265px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.295);
+    background-color: white;
+    margin: 5px;
+  }
+
+  .card-text {
+    height: 140px;
+  }
+
+  #filter-btn {
+    width: 100%;
+  }
+</style>
+
+{% block script %}
+
+
+{% endblock %}
+
+
+{% endblock %}
+
+
+{% block body %}
+<!-- Catagory Filter -->
+
+<div class="container-fluid">
+  <div class="row mt-4">
+
+
+    <div id="filter" class="col-sm-2 ">
+      <p class="fs-1 text-center fw-bold">Filter : </p>
+
+      {% for heading,filter in s_data.items %}
+      <h4>{{ heading|capfirst }}</h4>
+      <div style="height: 120px;overflow-y:auto;">
+        {% for fil in filter %}
+
+
+        <div>
+          <input type="checkbox" id="{{forloop.counter}}" name="filter" value="{{fil}}"> {{fil}}
+        </div>
+
+
+
+        {% endfor %}
+      </div>
+      <hr>
+      {% endfor %}
+      <a type="submit" id="filter-btn" onclick="dataSend()" class="btn btn-dark"> Filter </a>
+
+
+    </div>
+
+    <!-- carousel start -->
+    <div class="col-sm-10 ">
+
+      <div id="slideprod" class="carousel slide">
+
+
+
+
+        <div class="carousel-inner">
+          {% for product in products %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="row"  >
+
+              {% for i in product %}
+
+              <div class="col-sm-3" id="row-card">
+                <div class="card" >
+
+                  <img src="{{i.image.url}}" class="card-img-top" alt="...">
+
+
+                  <div class="card-body">
+                    <p>Likes <i class="bi bi-hand-thumbs-up "></i></p>
+                    <hr>
+                    <h5 class="card-title">{{i.pname}}</h5>
+                    {% if i.stock == 0 %}
+                    <span class="text-danger">Out of stocks</span>
+                    {% endif %}
+                    <p class="card-text" style="height: fit-content;">{{i.desc}}</p>
+                  </div>
+
+
+                  <div class="card-footer p-2 ">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'updatecart' 'add' %}?fun={{i.id}}&page_url=0" class="btn btn-outline-primary "
+                      style="margin-left: 20px;padding-left: 10px;"><i class="bi bi-cart-plus"></i> Add to
+                      cart</a>
+                    {% else %}
+
+                    <a onclick="CookieUpdate('{{i.id}}','add')" class="btn btn-outline-primary "
+                      style="margin-left: 20px;padding-left: 10px;"><i class="bi bi-cart-plus"></i> Add to
+                      cart</a>
+                    {% endif %}
+
+                    <a href='{% url "view" i.id %}' style="margin-left: 20px" class="btn btn-outline-success">View</a>
+
+                  </div>
+
+                </div>
+              </div>
+
+
+              {% endfor %}
+
+
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#slideprod" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#slideprod" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+{% endblock %}

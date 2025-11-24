@@ -1,0 +1,87 @@
+{% extends "shop/basic.html" %}
+{% load static %}
+
+<!doctype html>
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signup</title>
+  {% block link %}
+  <link rel="stylesheet" href="{% static 'css/enter.css' %}">{% endblock %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  
+{%  block style %}
+<style>
+  .invisible {
+  display: none;
+}
+</style>
+
+{% endblock %}
+</head>
+
+
+{% block body %}
+<div class="box mt-5">
+  <p class="headin fw-bold">Sign Up </p>
+  <div class="d-flex justify-content-center ">
+
+    <form action="{% url 'signup'%}" method="POST">
+      {% csrf_token %}
+
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col"><label class="form-label">Name :</label></th>
+            <th scope="col"><input type="text" class="form-control" name="name" required></th>
+          </tr>
+        </thead>
+        <tbody style="margin-bottom: 20px;">
+
+          <tr>
+            <th><label class="form-label">E mail :</label></th>
+            <td><input type="email" class="form-control" required name="email"></td>
+          </tr>
+          <tr>
+            <th><label class="form-label">Phone :</label></th>
+            <td> <input type="text" class="form-control" required name="phone"></td>
+          </tr>
+          <tr>
+            <th><label class="form-label">Password :</label></th>
+            <td><input type="password" class="form-control" name="pass1" required></td>
+          </tr>
+          <tr>
+            <th><label class="form-label">Confirm Passwords:</label></th>
+            <td><input type="password" class="form-control" name="pass2" required></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+
+      <button type="submit" class="btn btn-primary ">Submit</button>
+      <p style="font-size: small;">Already have account?<a href="{% url 'signin' %}">Click Here</a></p>
+
+
+    </form>
+  </div>
+
+</div>
+
+<script>
+  
+  var cat = document.getElementById("navbarSupportedContent");
+  cat.classList.add("invisible");
+  var check = document.getElementById("checkcart");
+  check.classList.add("invisible");
+
+</script>
+
+{% endblock %}

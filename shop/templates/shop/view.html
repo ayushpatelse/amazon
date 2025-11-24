@@ -1,0 +1,48 @@
+{% extends 'shop/basic.html' %}
+{% block title  %}
+{{product.pname}} 
+{% endblock %}
+{% block style %}
+<style>
+        img {
+                width: 400px;
+                height: 700px;
+                margin-right: 5px;
+
+        }
+
+        .container {
+                border: 1px solid lightgray;
+                border-radius: 10px;
+                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.13);
+
+        }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container bg-light mt-5">
+        <h1 style="margin-left:500px ;font-weight: bold;">{{Product.brand}}</h1>
+        <hr>
+        <div class="row p-5 ">
+                        
+                <div class="col-sm-5 p-3  imagebox">
+                        <img src="{{Product.image.url}}" alt="">
+                </div>
+                <div class="col-sm-7 p-3  ">
+                        <h2>{{Product.pname}}</h2>
+                        <h3>{{Product.desc}}</h3>
+                        <small>M.R.P</small>
+                        <h3><i class="bi bi-currency-dollar"></i>
+                                {{Product.price}}
+                        </h3>
+                        <a href="{% url 'updatecart'  'add' %}?addcart={{Product.id}}" class="btn btn-primary"><i
+                                class="bi bi-cart-plus">Add To Cart</i></a>
+
+                </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

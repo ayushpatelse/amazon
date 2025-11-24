@@ -1,0 +1,36 @@
+.box{
+        border-radius: 10px;
+        width: 35%;
+        border: 2px solid lightgray;
+        align-self: center;
+        margin-left: 35%;
+        display: block;
+        height: fit-content;
+        background-color: white;
+}
+.flex-row{
+        font-weight: bold;
+        
+}
+form .d-flex{   
+        padding: 10px;
+        margin-top: 10px;
+        font-size: larger;
+       
+}
+
+.headin{
+        text-align:center ;
+        font-size: 50px;
+}
+nav {
+        background-color: rgba(0, 0, 0, 0.856);
+
+        height: 70px;
+        font-size: large;
+        border: 1px solid;
+
+}
+body{
+        background-color: whitesmoke;
+}
